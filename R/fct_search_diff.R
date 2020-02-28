@@ -266,7 +266,7 @@ find_pbm_diff <- function(t_ind, threshold, max_agregate_size, save_file = NULL,
   
   t_ind <- as.data.table(t_ind) #conversion to data.table format
   
-  if(verbose) message("< --- Creation of the crossing matrix --- >    // date:",Sys.time())
+  if(verbose) message("< --- Creation of the crossing matrix --- >")
   t_ind <- simplify_z2_rem(t_ind)
   t_crois <- tab_crois(t_ind)
   t_crois <- t_crois[z1 != "blanchi" & z2 != "blanchi"]
@@ -278,12 +278,12 @@ find_pbm_diff <- function(t_ind, threshold, max_agregate_size, save_file = NULL,
   
   if(simplify){ #one can choose to skip these steps of graph reduction if desired
     
-    if(verbose) message("< --- Merging method 1 --- >    // date:",Sys.time())
+    if(verbose) message("< --- Merging method 1 --- > ")
     m_crois <- agregate(m_crois, threshold, methode = "m1", verbose = verbose)
     
     #if(to_save) saveRDS(m_crois, paste0("Resultats_diffman/m_crois_ag_m1_",save_file,".RDS"))
     
-    if(verbose) message("< --- Merging methods 1 and 2 --- >    // date:",Sys.time())
+    if(verbose) message("< --- Merging methods 1 and 2 --- >")
     m_crois <- agregate(m_crois, threshold, methode = "both", verbose = verbose)
     
     #if(to_save) saveRDS(m_crois, paste0("Resultats_diffman/m_crois_ag_m2_",save_file,".RDS"))
@@ -293,18 +293,18 @@ find_pbm_diff <- function(t_ind, threshold, max_agregate_size, save_file = NULL,
       return(NULL)
     }
     
-    if(verbose) message("< --- Splitting the graph --- >    // date:",Sys.time())
+    if(verbose) message("< --- Splitting the graph --- >")
     l_decomp <- decompose_m_crois(m_crois, max_agregate_size)
   }
   else{
     l_decomp <- comp_connexe_list(m_crois)
   }
   
-  if(verbose) message("< --- Exhaustive search of differentiation problems --- >    // date:",Sys.time())
+  if(verbose) message("< --- Exhaustive search of differentiation problems --- >")
   l_ag <- search_diff_agregate(l_decomp, threshold, max_agregate_size)
   l_ag <- desagregate_list(l_ag)
   
-  if(verbose) message("< --- Identification of risky observations --- >    // date:",Sys.time())
+  if(verbose) message("< --- Identification of risky observations --- >")
   obs_risque <- find_id_obs_risque(l_ag, t_ind, threshold)
   if(to_save) {
     saveRDS(obs_risque, paste0(save_file,".RDS"))

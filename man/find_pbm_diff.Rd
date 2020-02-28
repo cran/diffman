@@ -4,8 +4,14 @@
 \alias{find_pbm_diff}
 \title{Perform all the process to detect risky observations}
 \usage{
-find_pbm_diff(t_ind, threshold, max_agregate_size, save_file = NULL,
-  simplify = TRUE, verbose = TRUE)
+find_pbm_diff(
+  t_ind,
+  threshold,
+  max_agregate_size,
+  save_file = NULL,
+  simplify = TRUE,
+  verbose = TRUE
+)
 }
 \arguments{
 \item{t_ind}{The table of observations (data.frame or data.table). Each row

@@ -16,7 +16,7 @@
 #' @return En sortie on a un vecteur d'entiers indiquant les numéros
 #' de colonnes de \code{m_crois} impliqués.
 zones_front <- function(i, j, m_crois, type = "all"){
-  sum_col_i_j <- colSums(m_crois[c(i,j), ]) #somme des colonnes pour les lignes i et j
+  sum_col_i_j <- colSums(m_crois[c(i,j), ,drop = FALSE]) #somme des colonnes pour les lignes i et j
   col_sel_all <- which(0 < m_crois[i,] & m_crois[i,] < sum_col_i_j) #colonnes correspond aux zonages 2 communs à i et à j
   
   if(type == "all" | length(col_sel_all) == 0) return(col_sel_all)
@@ -78,7 +78,7 @@ valeurs_lien <- function(i, j, m_crois, ...){
 #' fus vaut TRUE ou FALSE et indique s'il faut fusionner les deux lignes.
 #' col est un vecteur d'entier qui indique les numéros de colonne à supprimer.
 test_fus_m1 <- function(i, j, m_crois,threshold){
-  sum_col_i_j <- colSums(m_crois[c(i,j), ]) #somme des colonnes pour les lignes i et j
+  sum_col_i_j <- colSums(m_crois[c(i,j), ,drop = FALSE]) #somme des colonnes pour les lignes i et j
   col_sel <- which(0 < m_crois[i,] & m_crois[i,] < sum_col_i_j) #colonnes correspond aux zonages 2 communs à i et à j
   
   if(length(col_sel) >= 2) { #les deux zones i et j partagent plusieurs zones de z2 en commun
@@ -182,7 +182,7 @@ test_fus_m2 <- function(i, j, m_crois, threshold){
     #sélection des colonnes de m_crois à supprimer
     #(i.e. les carreaux à l'intérieur de la fusion i-j)
     #______________________________________________
-    sum_col_i_j <- colSums(m_crois[c(i,j),]) #somme des colonnes pour les lignes i et j
+    sum_col_i_j <- colSums(m_crois[c(i,j),, drop = FALSE]) #somme des colonnes pour les lignes i et j
     col_sel = 0 < m_crois[i,] & m_crois[i,] < sum_col_i_j #colonnes correspond aux zonages 2 communs à i et à j
     
     if(sum(col_sel) >= 2) {

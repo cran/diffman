@@ -25,7 +25,7 @@ fusion <- function(i, j, m_crois, col_to_suppress){
   
   
   if(length(col_to_suppress) %in% c(ncol(m_crois), ncol(m_crois) - 1)) {
-    print("Everything is merged : no differentiation problems !")
+    print("Everything is merged")
   }
   
   else if(length(col_to_suppress) > 0) {

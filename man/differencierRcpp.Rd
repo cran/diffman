@@ -4,8 +4,14 @@
 \alias{differencierRcpp}
 \title{Recherche exhaustive des problemes de differentiation}
 \usage{
-differencierRcpp(iTailleCible, iSeuil, vNbObsTerritoire, vNbObsCarreaux,
-  mContiguiteT, mContiguiteTC)
+differencierRcpp(
+  iTailleCible,
+  iSeuil,
+  vNbObsTerritoire,
+  vNbObsCarreaux,
+  mContiguiteT,
+  mContiguiteTC
+)
 }
 \arguments{
 \item{iTailleCible}{: entiers indiquant la taille des agrégats à tester}

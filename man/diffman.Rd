@@ -3,7 +3,6 @@
 \docType{package}
 \name{diffman}
 \alias{diffman}
-\alias{diffman-package}
 \title{\code{diffman} package}
 \description{
 Package to manage differentiation

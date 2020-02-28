@@ -4,8 +4,14 @@
 \alias{agregate}
 \title{Fonction pour agreger le graphe}
 \usage{
-agregate(m_crois, threshold, kmax = 0,
-  pas_pb = floor(nrow(m_crois)/50), verbose = TRUE, ...)
+agregate(
+  m_crois,
+  threshold,
+  kmax = 0,
+  pas_pb = floor(nrow(m_crois)/50),
+  verbose = TRUE,
+  ...
+)
 }
 \arguments{
 \item{m_crois}{Matrice de croisement.}
